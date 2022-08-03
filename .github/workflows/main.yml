@@ -6,15 +6,6 @@ on:
       - main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - uses: nrwl/nx-set-shas@v2
-      - run: yarn install
-      - run: npx nx affected --target=build --parallel=3
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -23,6 +14,7 @@ jobs:
         with:
           # We need to fetch all branches and commits so that Nx affected has a base to compare against.
           fetch-depth: 0
+      - uses: nrwl/nx-set-shas@v2
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
