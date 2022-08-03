@@ -6,7 +6,7 @@
     "dev": "nx serve",
     "test": "nx test",
     "build:local": "nx affected --target=build",
-    "start": "node ./dist/apps/server/main.js"
+    "start": "node ./apps/server/main.js"
   },
   "private": true,
   "dependencies": {
