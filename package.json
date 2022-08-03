@@ -4,7 +4,6 @@
   "license": "MIT",
   "scripts": {
     "dev": "nx serve",
-    "build": "nx affected --target=build --base=NX_BASE --head=NX_HEAD",
     "test": "nx test",
     "start": "node ./dist/apps/server/main.js"
   },
