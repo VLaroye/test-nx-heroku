@@ -18,6 +18,7 @@ const front2Path = dirname(require.resolve('../../front2/project.json'))
 const frontBuiltFilesPath = `${frontPath}/build`
 const front2BuiltFilesPath = `${front2Path}/build`
 
+console.log('test')
 const serveFront = (app: express.Express) => {
   app.use('/', express.static(frontBuiltFilesPath))
 
