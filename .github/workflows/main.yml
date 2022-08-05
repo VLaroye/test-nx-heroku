@@ -17,6 +17,8 @@ jobs:
     with:
       number-of-agents: 3
       parallel-commands-on-agents: npx nx affected --target=build --parallel=3
+      final-commands: |
+        "ls ./"
   deploy:
     needs: build
     runs-on: ubuntu-latest
