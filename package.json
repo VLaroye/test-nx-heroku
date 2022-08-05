@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "nx serve",
     "test": "nx test",
-    "build:local": "nx affected --target=build",
+    "build": "nx affected --target=build",
+    "heroku-postbuild": "echo 'Skipping heroku build'",
     "start": "node ./apps/server/main.js"
   },
   "private": true,
