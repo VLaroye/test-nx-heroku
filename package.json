@@ -7,7 +7,7 @@
     "test": "nx test",
     "build": "nx affected --target=build",
     "heroku-postbuild": "echo 'Skipping heroku build'",
-    "start": "node ./apps/server/main.js"
+    "start": "node ./dist/apps/server/main.js"
   },
   "private": true,
   "dependencies": {
