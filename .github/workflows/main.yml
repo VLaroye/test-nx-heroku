@@ -28,4 +28,3 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "test-heroku-nx"
           heroku_email: "laroye.vincent@gmail.com"
-          buildpack: "https://github.com/heroku/heroku-buildpack-static"
