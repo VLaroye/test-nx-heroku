@@ -15,11 +15,11 @@ jobs:
       - uses: nrwl/nx-set-shas@v2
       - run: yarn install
       - run: npx nx affected --target=build --parallel=3
-      - run: ls /
+      - run: ls dist
       - uses: actions/upload-artifact@v3
         with:
           name: build-result
-          path: ./dist/
+          path: dist
   deploy:
     needs: build
     runs-on: ubuntu-latest
