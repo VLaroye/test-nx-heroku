@@ -15,11 +15,6 @@ jobs:
       - uses: nrwl/nx-set-shas@v2
       - run: yarn install
       - run: npx nx affected --target=build --parallel=3
-      - run: ls ./
-      - uses: actions/upload-artifact@v3
-        with:
-          name: build-result
-          path: ./dist
   agents:
     name: Nx Cloud - Agents
     uses: nrwl/ci/.github/workflows/nx-cloud-agents.yml@v0.6
@@ -29,9 +24,6 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@v3
-        with:
-          name: build-result
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
