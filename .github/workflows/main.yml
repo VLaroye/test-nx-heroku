@@ -15,6 +15,7 @@ jobs:
       - uses: nrwl/nx-set-shas@v2
       - run: yarn install
       - run: npx nx affected --target=build --parallel=3
+      - run: ls /
       - uses: actions/upload-artifact@v3
         with:
           name: build-result
