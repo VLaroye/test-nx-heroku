@@ -1,31 +1,32 @@
-##name: Deploy
+name: Deploy
 
-##on:
-  ##push:
-  ##  branches:
-  ##    - main
+on:
+  push:
+    branches:
+      - main
 
-##jobs:
-  ##agents:
-  ##  name: Nx Cloud - Agents
-  ##  uses: nrwl/ci/.github/workflows/nx-cloud-agents.yml@v0.6
-  ##  with:
-  ##    number-of-agents: 3
-  ## build:
-    ##name: Nx Cloud - Main Job
-    ##uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.6
-    ##with:
-      ##number-of-agents: 3
-      ##parallel-commands-on-agents: npx nx affected --target=build --parallel=3
-  ##deploy:
-   ## needs: build
-    ##runs-on: ubuntu-latest
-    ##steps:
-      ##- uses: actions/checkout@v2
-        ##with:
-          ##fetch-depth: 0
-      ##- uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
-       ## with:
-         ## heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          ##heroku_app_name: "test-heroku-nx"
-          ##heroku_email: "laroye.vincent@gmail.com"
+jobs:
+  agents:
+    name: Nx Cloud - Agents
+    uses: nrwl/ci/.github/workflows/nx-cloud-agents.yml@v0.6
+    with:
+      number-of-agents: 3
+  build:
+    name: Nx Cloud - Main Job
+    uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.6
+    with:
+      number-of-agents: 3
+      parallel-commands-on-agents: npx nx affected --target=build --parallel=3
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - run: ls ./
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "test-heroku-nx"
+          heroku_email: "laroye.vincent@gmail.com"
