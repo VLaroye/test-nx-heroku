@@ -17,15 +17,10 @@ jobs:
     with:
       number-of-agents: 3
       parallel-commands-on-agents: npx nx affected --target=build --parallel=3
-      final-commands: |
-        "ls ./"
   deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
       - run: ls ./
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
