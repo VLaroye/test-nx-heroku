@@ -6,7 +6,7 @@
     "dev": "nx serve",
     "test": "nx test",
     "build": "nx affected --target=build",
-    "heroku-postbuild": "echo 'Skipping heroku build'",
+    "heroku-postbuild": "npx nx run-many --target=build --projects=front,front2,server",
     "start": "node ./dist/apps/server/main.js"
   },
   "private": true,
